@@ -32,28 +32,29 @@ const stockPicker = (prices) => {
         sell: bestSellIndex
     };    
 };
-const arrToSort = [4,3,78,2,0,2]
-const arrToSort2 = [10,5,8,11,9,3,1,18]
+const arrToSort = [4,3,78,2,0,2];
+const arrToSort2 = [10,5,8,11,9,3,1,18];
    
 
 const bubbleSort = (items) => {
-    
+
     for (let firstNumIndex = 0; firstNumIndex < items.length; firstNumIndex++) {
-        let firstNumValue = items[firstNumIndex]
-        let secondNumIndex = firstNumIndex + 1
+        let firstNumValue = items[firstNumIndex];
+        let secondNumIndex = firstNumIndex + 1;
 
         for (; secondNumIndex <= items.length; secondNumIndex++) {
-            let secondNumValue = items[secondNumIndex]
+            let secondNumValue = items[secondNumIndex];
             if (firstNumValue > secondNumValue) {
-                [items[firstNumIndex], items[secondNumIndex]] = [items[secondNumIndex], items[firstNumIndex]]
+                [items[firstNumIndex], items[secondNumIndex]] = [items[secondNumIndex], items[firstNumIndex]];
             } 
             if (firstNumValue = secondNumValue) {
-                continue
+                continue;
             }
         }
     }
-    return items 
-    return [0,2,2,3,4,78]
+    return items;
+    //test
+    //return [0,2,2,3,4,78];
 };
 
 console.log(bubbleSort(arrToSort2))
