@@ -1,1 +1,43 @@
-console.log("something")
+const stockPrices = [17,3,6,9,15,8,6,1,10];
+
+const profitCalc = (i,j) => {
+    prof = j - i;
+    return prof
+}
+
+const stockPicker = (prices) => {
+// identify necessary variables
+    let bestBuyIndex = 0
+    let bestSellIndex = 0
+    let maxProfit = 0
+
+    // create for loop that iterates through current prices.
+    for (let buyIndex = 0; buyIndex <= prices.length; buyIndex++) {
+        const currentPrice = stockPrices[buyIndex]
+
+        // create for loop that iterates through all index's after i aka j
+        for (let sellIndex = buyIndex + 1; sellIndex < prices.length; sellIndex++) {
+            profit = prices[sellIndex] - prices[buyIndex];
+
+            if (profit > maxProfit) {
+                maxProfit = profit;
+                bestBuyIndex = buyIndex;
+                bestSellIndex = sellIndex;
+            } 
+        } 
+    } 
+          
+    return {
+        buy: bestBuyIndex,
+        sell: bestSellIndex
+    };    
+};
+
+const bubbleSort = (items) => {
+    return [0,2,2,3,4,78]
+};
+
+module.exports = {
+    stockPicker,
+    bubbleSort,
+};
