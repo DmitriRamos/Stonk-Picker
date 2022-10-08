@@ -53,8 +53,6 @@ const bubbleSort = (items) => {
         }
     }
     return items;
-    //test
-    //return [0,2,2,3,4,78];
 };
 
 console.log(bubbleSort(arrToSort2))
