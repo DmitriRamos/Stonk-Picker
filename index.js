@@ -34,29 +34,134 @@ const stockPicker = (prices) => {
 };
 const arrToSort = [4,3,78,2,0,2];
 const arrToSort2 = [10,5,8,11,9,3,1,18];
-   
 
-const bubbleSort = (items) => {
-
+const bubbleSort = (items) => { 
     for (let firstNumIndex = 0; firstNumIndex < items.length; firstNumIndex++) {
         let firstNumValue = items[firstNumIndex];
-        let secondNumIndex = firstNumIndex + 1;
 
-        for (; secondNumIndex <= items.length; secondNumIndex++) {
+        for (let secondNumIndex = firstNumIndex + 1; secondNumIndex < items.length; secondNumIndex++) {
             let secondNumValue = items[secondNumIndex];
             if (firstNumValue > secondNumValue) {
-                [items[firstNumIndex], items[secondNumIndex]] = [items[secondNumIndex], items[firstNumIndex]];
-            } 
-            if (firstNumValue = secondNumValue) {
-                continue;
+                items[secondNumIndex] = items[firstNumIndex]
+                items[firstNumIndex] = secondNumValue;
             }
+            
+            firstNumValue = secondNumValue
         }
     }
+
     return items;
 };
 
-console.log(bubbleSort(arrToSort2))
+let a = 1;
+let b = 2;
+a, b = b, a
+
+const thing = null;
+
+let whatever;
+
+const coolObject = {};
+coolObject.name = null;
+
+const chadSort = (items) => {
+    let swapped = true;
+    while (swapped) {
+        swapped = false;
+        for (let i = 0; i < items.length; i++) {
+            let secondVal = items[i + 1];
+            if (secondVal !== undefined && items[i] > secondVal) {
+                swapped = true;
+                items[i + 1] = items[i];
+                items[i] = secondVal;
+            }
+        }
+    }
+
+    return items;
+};
+
+// if (firstNumValue = secondNumValue) {
+//     continue;
+// }
+
+//console.log(bubbleSort(arrToSort2))
+
+//write function that checks if string is a substring of another
+// isSubstring("low", "below") => true
+// isSubstring("retard", "whale") => false
+
+// "low" "below"
+const dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+
+const isSubstring = (subString, fullString) => {
+    debugger;
+    let foundLength = 0;
+    for (let i = 0; i < fullString.length; i++) {
+        if (subString[foundLength] === fullString[i]) {
+            foundLength++;
+        } else {
+            foundLength = 0;
+        }
+
+        if (subString.length === foundLength) {
+            return true;
+        }
+        
+    }
+    
+    return false;
+}
+
+/*const subStringFinder = (string, stringArr) => {
+    arrOfString = string.split(' ')
+    let howManyTimes = 0
+    for (let i = 0; i < stringArr.length; i++) {
+        const currentString = stringArr[i]
+       
+        if (isSubstring(string, currentString) === true) {
+            howManyTimes++
+        }   
+    } 
+    return `${string}, How many times ==> ${howManyTimes}`
+
+}*/
+
+const subStringFinder = (string, stringArr) => {
+    arrOfString = string.split(' ')
+    let howManyTimes = 0
+    for (let i = 0; i < stringArr.length; i++) {
+        const currentString = stringArr[i]
+        const currentStringTwo = arrOfString[howManyTimes]
+        if (isSubstring(currentString, currentStringTwo) === true) {
+            howManyTimes++
+        } else {
+            howManyTimes = 0
+        }
+
+        if (howManyTimes > 0) {
+            console.log(`${currentString}, How many times ==> ${howManyTimes}`)
+        }
+    } 
+    
+
+}
+
+
+subStringFinder('below are you doing today partner?', dictionary)
+
+
+
+
+
+
+
+
+
 module.exports = {
     stockPicker,
     bubbleSort,
+    chadSort,
+    isSubstring,
 };
+
