@@ -128,27 +128,28 @@ const isSubstring = (subString, fullString) => {
 }*/
 
 const subStringFinder = (string, stringArr) => {
-    arrOfString = string.split(' ')
-    let howManyTimes = 0
+    arrOfString = string.split(" ");
+    let howManyTimes = 0;
     for (let i = 0; i < stringArr.length; i++) {
-        const currentString = stringArr[i]
-        const currentStringTwo = arrOfString[howManyTimes]
-        if (isSubstring(currentString, currentStringTwo) === true) {
-            howManyTimes++
-        } else {
-            howManyTimes = 0
+        const currentString = stringArr[i];
+        howManyTimes = 0;
+        for (let j = 0; j < arrOfString.length; j++) {
+            const currentStringTwo = arrOfString[j];
+            if (isSubstring(currentString, currentStringTwo) === true) {
+            howManyTimes++;
+            }
         }
-
+        
         if (howManyTimes > 0) {
-            console.log(`${currentString}, How many times ==> ${howManyTimes}`)
-        }
-    } 
+            console.log(`${currentString}, How many times ==> ${howManyTimes}`);
+        } 
     
+    } 
 
 }
 
 
-subStringFinder('below are you doing today partner?', dictionary)
+subStringFinder('howdy partner, im looking for a place to sit down.', dictionary);
 
 
 
