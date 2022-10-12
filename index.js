@@ -129,32 +129,64 @@ const isSubstring = (subString, fullString) => {
 
 const subStringFinder = (string, stringArr) => {
     arrOfString = string.split(" ");
-    let howManyTimes = 0;
+    const found ={}
     for (let i = 0; i < stringArr.length; i++) {
         const currentString = stringArr[i];
-        howManyTimes = 0;
+        
         for (let j = 0; j < arrOfString.length; j++) {
             const currentStringTwo = arrOfString[j];
             if (isSubstring(currentString, currentStringTwo) === true) {
-            howManyTimes++;
+                const value = found[currentStringTwo]
+                found[currentStringTwo] = value ? value + 1 : 1
             }
         }
         
-        if (howManyTimes > 0) {
-            console.log(`${currentString}, How many times ==> ${howManyTimes}`);
-        } 
     
     } 
-
+    return found
 }
 
 
-subStringFinder('howdy partner, im looking for a place to sit down.', dictionary);
+//console.log(subStringFinder('howdy partner im looking for a place to sit down', dictionary));
 
+const caeserCipher = (string, num) => {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    let capitalAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    let stringToCipher = string.split('');
+    let arrayOfLetters = [];
+    
+    
+    for (let i = 0; i < stringToCipher.length; i++){
+        const currentStringIndex = stringToCipher[i];
+        const temp = alphabet.length - alphabet.indexOf(currentStringIndex);
+        const capTemp = capitalAlphabet.length - capitalAlphabet.indexOf(currentStringIndex);
+        const newNum = num - temp;
+        const capNewNum = num - capTemp;
+        let loopedLetter = alphabet[newNum];
+        if (currentStringIndex === ' ' || currentStringIndex === '?' || currentStringIndex === '!' || currentStringIndex === ',' || currentStringIndex === "'") {
+            arrayOfLetters.push(currentStringIndex);
+        }
+        
+        for (let j = 0; j <= alphabet.length; j++){
+            let newLetter = j + num;
+            let letterToPush = alphabet[newLetter];
+            let currentLetter = alphabet[j];
+            if (currentStringIndex === currentLetter) { 
+                newLetter > alphabet.length ? arrayOfLetters.push(loopedLetter) : arrayOfLetters.push(letterToPush);
+            }
+            if (currentStringIndex === capitalAlphabet[j]) {
+                newLetter > alphabet.length ? arrayOfLetters.push(capitalAlphabet[capNewNum]) : arrayOfLetters.push(capitalAlphabet[newLetter]);
+            }
+                    
+        }
+    }
+    return arrayOfLetters.join('');
+}
+/*let alphabet = {
+    1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'
+}*/
 
-
-
-
+console.log(caeserCipher("What's up, Zac?", 7))
 
 
 
