@@ -154,39 +154,33 @@ const caeserCipher = (string, num) => {
     let capitalAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     let stringToCipher = string.split('');
     let arrayOfLetters = [];
-    
+   
     
     for (let i = 0; i < stringToCipher.length; i++){
         const currentStringIndex = stringToCipher[i];
-        const temp = alphabet.length - alphabet.indexOf(currentStringIndex);
-        const capTemp = capitalAlphabet.length - capitalAlphabet.indexOf(currentStringIndex);
-        const newNum = num - temp;
-        const capNewNum = num - capTemp;
-        let loopedLetter = alphabet[newNum];
         if (currentStringIndex === ' ' || currentStringIndex === '?' || currentStringIndex === '!' || currentStringIndex === ',' || currentStringIndex === "'") {
             arrayOfLetters.push(currentStringIndex);
         }
         
         for (let j = 0; j <= alphabet.length; j++){
             let newLetter = j + num;
-            let letterToPush = alphabet[newLetter];
             let currentLetter = alphabet[j];
+            let loopedIndex = (num + j) % alphabet.length;
             if (currentStringIndex === currentLetter) { 
-                newLetter > alphabet.length ? arrayOfLetters.push(loopedLetter) : arrayOfLetters.push(letterToPush);
+                newLetter > alphabet.length ? arrayOfLetters.push(alphabet[loopedIndex]) : arrayOfLetters.push(alphabet[newLetter]);
             }
             if (currentStringIndex === capitalAlphabet[j]) {
-                newLetter > alphabet.length ? arrayOfLetters.push(capitalAlphabet[capNewNum]) : arrayOfLetters.push(capitalAlphabet[newLetter]);
+                newLetter > alphabet.length ? arrayOfLetters.push(capitalAlphabet[loopedIndex]) : arrayOfLetters.push(capitalAlphabet[newLetter]);
             }
                     
         }
     }
     return arrayOfLetters.join('');
 }
-/*let alphabet = {
-    1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'
-}*/
 
-console.log(caeserCipher("What's up, Zac?", 7))
+
+
+console.log(caeserCipher("It should work this time!", 50));
 
 
 
